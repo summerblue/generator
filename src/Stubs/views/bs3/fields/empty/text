@@ -1,0 +1,4 @@
+<div class="form-group">
+	<label for="{{field.name}}-field">{{field.Name}}</label>
+	<textarea name="{{field.name}}" id="{{field.name}}-field" class="form-control" rows="3">{{field.value.default}}</textarea>
+</div>

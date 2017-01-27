@@ -1,0 +1,3 @@
+Schema::table('{{models}}', function(Blueprint $table) {
+            {{schema_up}}
+        });

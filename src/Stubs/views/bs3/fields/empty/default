@@ -1,0 +1,4 @@
+<div class="form-group">
+	<label for="{{field.name}}-field">{{field.Name}}</label>
+	--{{field.name}}--
+</div>

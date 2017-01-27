@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use {{namespace}}\Models\{{Model}};
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class {{Model}}Controller extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+	public function index()
+	{
+		${{models}} = $this->model->paginate();
+
+		return view('{{models}}.index', compact('{{models}}'));
+	}
+
+	public function create()
+	{
+		return view('{{models}}.create');
+	}
+
+	public function store(Request $request)
+	{
+		$inputs = $request->all();
+		$this->model->create($inputs);
+
+		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
+	}
+
+	public function show($id)
+	{
+		${{model}} = $this->model->findOrFail($id);
+		
+		return view('{{models}}.show', compact('{{model}}'));
+	}
+
+	public function edit($id)
+	{
+		${{model}} = $this->model->findOrFail($id);
+		
+		return view('{{models}}.edit', compact('{{model}}'));
+	}
+
+	public function update(Request $request, $id)
+	{
+		$inputs = $request->all();
+
+		${{model}} = $this->model->findOrFail($id);		
+		${{model}}->update($inputs);
+
+		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
+	}
+
+	public function destroy($id)
+	{
+		$this->model->destroy($id);
+
+		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');
+	}
+}
