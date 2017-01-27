@@ -40,7 +40,9 @@ class MakeModel
     private function start()
     {
         $name = $this->scaffoldCommandObj->getObjName('Name');
-        $path = $this->getPath("Models/" . $name, 'model');
+        $path = $this->getPath($name, 'model');
+
+        $this->createBaseModelIfNotExists();
 
         if ($this->files->exists($path)) 
         {
@@ -52,6 +54,15 @@ class MakeModel
         $this->scaffoldCommandObj->info('+ Model');
     }
 
+    protected function createBaseModelIfNotExists()
+    {
+        $base_model_path = $this->getPath("Models/Model.php", 'model');
+        if ($this->files->exists($path)) 
+        {
+            return $this->scaffoldCommandObj->comment("x $name");
+        }
+
+    }
     /**
      * Compile the migration stub.
      *

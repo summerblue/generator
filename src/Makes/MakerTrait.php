@@ -177,7 +177,7 @@ trait MakerTrait
         }
         elseif($path == "model")
         {
-            return './app/'.$file_name.'.php';
+            return './app/Models/'.$file_name.'.php';
         }
         elseif($path == "seed")
         {
