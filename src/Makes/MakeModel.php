@@ -54,15 +54,6 @@ class MakeModel
         $this->scaffoldCommandObj->info('+ Model');
     }
 
-    protected function createBaseModelIfNotExists()
-    {
-        $base_model_path = $this->getPath("Models/Model.php", 'model');
-        if ($this->files->exists($path)) 
-        {
-            return $this->scaffoldCommandObj->comment("x $name");
-        }
-
-    }
     /**
      * Compile the migration stub.
      *
@@ -104,4 +95,28 @@ class MakeModel
 
         return $this;
     }
+
+    protected function createBaseModelIfNotExists()
+    {
+        $base_model_path = $this->getPath("Model", 'model');
+        if (!$this->files->exists($base_model_path)) 
+        {
+            $this->files->put($base_model_path, $this->compileBaseModelStub());
+            return $this->scaffoldCommandObj->info("+ BasicModel");
+        }
+
+        return $this->scaffoldCommandObj->comment("x BasicModel (Skip)");
+    }
+
+    protected function compileBaseModelStub()
+    {
+        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/base_model.stub');
+
+        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
+        $this->buildFillable($stub);
+
+        return $stub;
+    }
+
+
 }
