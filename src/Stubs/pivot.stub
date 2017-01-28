@@ -3,13 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class {{class}} extends Migration {
-
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
+class {{class}} extends Migration 
+{
 	public function up()
 	{
 		Schema::create('{{pivotTableName}}', function(Blueprint $table)
@@ -21,14 +16,8 @@ class {{class}} extends Migration {
 		});
 	}
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
 	public function down()
 	{
 		Schema::drop('{{pivotTableName}}');
 	}
-
 }
