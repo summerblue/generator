@@ -53,7 +53,7 @@ class {{Model}}Controller extends Controller
 
 	public function destroy({{Model}} ${{model}})
 	{
-		{{Model}}::delete();
+		${{model}}->delete();
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');
 	}

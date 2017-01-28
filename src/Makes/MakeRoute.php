@@ -43,9 +43,14 @@ class MakeRoute
         $name = $this->scaffoldCommandObj->getObjName('Name');
         $path = $this->getPath($name, 'route');
 
-        $this->files->append($path, $this->compileRouteStub());
-
-        $this->scaffoldCommandObj->info('Routes Updated successfully.');
+        $stub = $this->compileRouteStub();
+        
+        if (strpos($this->files->get($path), $stub) === false) {
+            $this->files->append($path, $this->compileRouteStub());
+            return $this->scaffoldCommandObj->info('+ Routes Updated successfully.');
+        }
+        
+        return $this->scaffoldCommandObj->comment("x Routes Updated Skipped.");
     }
 
     /**
