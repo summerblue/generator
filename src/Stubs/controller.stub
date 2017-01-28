@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use {{namespace}}\Models\{{Model}};
+use {{namespace}}Models\{{Model}};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +15,7 @@ class {{Model}}Controller extends Controller
 
 	public function index()
 	{
-		${{models}} = $this->model->paginate();
+		${{models}} = {{Model}}::paginate();
 
 		return view('{{models}}.index', compact('{{models}}'));
 	}
@@ -28,21 +28,21 @@ class {{Model}}Controller extends Controller
 	public function store(Request $request)
 	{
 		$inputs = $request->all();
-		$this->model->create($inputs);
+		{{Model}}::create($inputs);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
 	}
 
 	public function show($id)
 	{
-		${{model}} = $this->model->findOrFail($id);
+		${{model}} = {{Model}}::findOrFail($id);
 		
 		return view('{{models}}.show', compact('{{model}}'));
 	}
 
 	public function edit($id)
 	{
-		${{model}} = $this->model->findOrFail($id);
+		${{model}} = {{Model}}::findOrFail($id);
 		
 		return view('{{models}}.edit', compact('{{model}}'));
 	}
@@ -51,7 +51,7 @@ class {{Model}}Controller extends Controller
 	{
 		$inputs = $request->all();
 
-		${{model}} = $this->model->findOrFail($id);		
+		${{model}} = {{Model}}::findOrFail($id);		
 		${{model}}->update($inputs);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
@@ -59,7 +59,7 @@ class {{Model}}Controller extends Controller
 
 	public function destroy($id)
 	{
-		$this->model->destroy($id);
+		{{Model}}::destroy($id);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');
 	}

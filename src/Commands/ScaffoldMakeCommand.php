@@ -89,15 +89,18 @@ class ScaffoldMakeCommand extends Command
         $this->makeSeed();
         $this->makeModel();
         $this->makeController();
+        $this->makeRoute();
         // $this->makeLocalization(); //ToDo - implement in future version
         $this->makeViews();
         $this->makeViewLayout();
+        
+        $this->call('migrate');
 
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");
 
         $this->composer->dumpAutoloads();
-        $this->error("Don't forget to adjust: 'migrate' and 'routes'");
+        
     }
 
     /**
@@ -185,6 +188,16 @@ class ScaffoldMakeCommand extends Command
     private function makeViews()
     {
         new MakeView($this, $this->files);
+    }
+
+    /**
+     * Setup views and assets
+     *
+     * @return void
+     */
+    private function makeRoute()
+    {
+        new MakeRoute($this, $this->files);
     }
 
     /**

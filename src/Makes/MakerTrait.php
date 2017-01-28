@@ -203,7 +203,7 @@ trait MakerTrait
             return './resources/lang/'.$file_name.'.php';
         }
         elseif($path == "route"){
-            return './app/Http/routes.php';
+            return './routes/web.php';
         }
     }
 
