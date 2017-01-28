@@ -1,0 +1,18 @@
+<?php 
+
+namespace App\Models\Traits;
+
+use App\Models\{{Model}};
+
+trait {{Model}}Operation
+{
+    public static function createWithInput($data)
+    {
+        return {{Model}}::create($data);
+    }
+
+    public function updateWithInput($data)
+    {
+        return $this->update($data);
+    }
+}

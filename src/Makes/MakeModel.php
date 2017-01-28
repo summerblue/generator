@@ -44,6 +44,8 @@ class MakeModel
 
         $this->createBaseModelIfNotExists();
 
+        $this->createModelTrait();
+
         if ($this->files->exists($path)) 
         {
             return $this->scaffoldCommandObj->comment("x $name");
@@ -111,6 +113,34 @@ class MakeModel
     protected function compileBaseModelStub()
     {
         $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/base_model.stub');
+
+        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
+        $this->buildFillable($stub);
+
+        return $stub;
+    }
+    
+    protected function createModelTrait()
+    {
+        $name = $this->scaffoldCommandObj->getObjName('Name');
+        $path = $this->getPath($name, 'model-trait');
+        if (!$this->files->exists($path)) 
+        {
+            $dir = $this->files->dirname($path);
+            if ( ! $this->files->isDirectory($dir)) {
+                $this->files->makeDirectory($dir);
+            }
+
+            $this->files->put($path, $this->compileModelTraitStub());
+            return $this->scaffoldCommandObj->info("+ Model Trait");
+        }
+
+        return $this->scaffoldCommandObj->comment("x Model Trait (Skip)");
+    }
+
+    protected function compileModelTraitStub()
+    {
+        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/model_trait.stub');
 
         $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
         $this->buildFillable($stub);

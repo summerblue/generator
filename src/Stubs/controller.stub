@@ -28,7 +28,7 @@ class {{Model}}Controller extends Controller
 	public function store(Request $request)
 	{
 		$inputs = $request->all();
-		{{Model}}::create($inputs);
+		{{Model}}::createWithInput($inputs);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
 	}
@@ -46,7 +46,7 @@ class {{Model}}Controller extends Controller
 	public function update(Request $request, {{Model}} ${{model}})
 	{
 		$inputs = $request->all();
-		${{model}}->update($inputs);
+		${{model}}->updateWithInput($inputs);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
 	}

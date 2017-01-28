@@ -179,6 +179,10 @@ trait MakerTrait
         {
             return './app/Models/'.$file_name.'.php';
         }
+        elseif($path == "model-trait")
+        {
+            return './app/Models/Traits/'.$file_name.'Operation.php';
+        }
         elseif($path == "seed")
         {
             return './database/seeds/'.$file_name.'.php';
