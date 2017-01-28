@@ -33,25 +33,19 @@ class {{Model}}Controller extends Controller
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
 	}
 
-	public function show($id)
+	public function show({{Model}} ${{model}})
 	{
-		${{model}} = {{Model}}::findOrFail($id);
-		
 		return view('{{models}}.show', compact('{{model}}'));
 	}
 
-	public function edit($id)
+	public function edit({{Model}} ${{model}})
 	{
-		${{model}} = {{Model}}::findOrFail($id);
-		
 		return view('{{models}}.edit', compact('{{model}}'));
 	}
 
-	public function update(Request $request, $id)
+	public function update(Request $request, {{Model}} ${{model}})
 	{
 		$inputs = $request->all();
-
-		${{model}} = {{Model}}::findOrFail($id);		
 		${{model}}->update($inputs);
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
