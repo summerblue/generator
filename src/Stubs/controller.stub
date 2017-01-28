@@ -51,9 +51,9 @@ class {{Model}}Controller extends Controller
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
 	}
 
-	public function destroy($id)
+	public function destroy({{Model}} ${{model}})
 	{
-		{{Model}}::destroy($id);
+		{{Model}}::delete();
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');
 	}
