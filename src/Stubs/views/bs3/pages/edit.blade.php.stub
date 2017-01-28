@@ -1,17 +1,16 @@
-@extends('layout')
-
-@section('header')
-    <div class="page-header">
-        <h1><i class="glyphicon glyphicon-edit"></i> {{Model}} / Edit #{{${{model}}->id}}</h1>
-    </div>
-@endsection
+@extends('layouts.app')
 
 @section('content')
-    @include('error')
 
-    <div class="row">
-        <div class="col-md-12">
+<div class="container">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+        <div class="panel-heading">
+            <h1><i class="glyphicon glyphicon-edit"></i> {{Model}} / Edit #{{${{model}}->id}}</h1>
+        </div>
 
+        @include('error')
+
+        <div class="panel-body">
             <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -23,7 +22,8 @@
                     <a class="btn btn-link pull-right" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
                 </div>
             </form>
-
         </div>
     </div>
+</div>
+
 @endsection

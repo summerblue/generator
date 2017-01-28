@@ -1,17 +1,16 @@
-@extends('layout')
-
-@section('header')
-    <div class="page-header clearfix">
-        <h1>
-            <i class="glyphicon glyphicon-align-justify"></i> {{Model}}
-            <a class="btn btn-success pull-right" href="{{ route('{{prefix}}{{models}}.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
-        </h1>
-    </div>
-@endsection
+@extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
+<div class="container">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+        <div class="panel-heading">
+            <h1>
+                <i class="glyphicon glyphicon-align-justify"></i> {{Model}}
+                <a class="btn btn-success pull-right" href="{{ route('{{prefix}}{{models}}.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
+            </h1>
+        </div>
+
+        <div class="panel-body">
             @if(${{models}}->count())
                 <table class="table table-condensed table-striped">
                     <thead>
@@ -53,8 +52,8 @@
             @else
                 <h3 class="text-center alert alert-info">Empty!</h3>
             @endif
-
         </div>
     </div>
+</div>
 
 @endsection
