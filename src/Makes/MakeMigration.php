@@ -46,15 +46,15 @@ class MakeMigration
      */
     protected function start(){
         $name = 'create_'.str_plural(strtolower( $this->scaffoldCommandObj->argument('name') )).'_table';
+        $path = $this->getPath($name);
 
-        if ($this->files->exists($path = $this->getPath($name)))
+        if ( ! $this->classExists($name))
         {
-            return $this->scaffoldCommandObj->comment('x ' . $path);
+            $this->makeDirectory($path);
+            $this->files->put($path, $this->compileMigrationStub());
+            return $this->scaffoldCommandObj->info('+ ' . $path);
         }
-
-        $this->makeDirectory($path);
-        $this->files->put($path, $this->compileMigrationStub());
-        $this->scaffoldCommandObj->info('+ ' . $path);
+        return $this->scaffoldCommandObj->comment('x ' . $path);
     }
 
     /**
@@ -101,5 +101,16 @@ class MakeMigration
         $stub = str_replace(['{{schema_up}}', '{{schema_down}}'], $schema, $stub);
         
         return $this;
+    }
+
+    public function classExists($name)
+    {
+        $files = $this->files->allFiles('./database/migrations/');
+        foreach ($files as $file) {
+            if (strpos($file->getFilename(), $name) !== false) {
+                return true;
+            }
+        }
+        return false;
     }
 }
