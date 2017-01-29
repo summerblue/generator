@@ -1,15 +1,20 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\{{Model}};
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
-
-class {{Model}}TableSeeder extends Seeder {
-
+class {{Model}}TableSeeder extends Seeder 
+{
     public function run()
     {
-        // TestDummy::times(20)->create('App\{{Model}}');
+        ${{model}}s = factory({{Model}}::class)->times(50)->make()->each(function (${{model}}, $index) {
+            if ($index == 0) {
+                // ${{model}}->field = 'value';
+            }
+        });
+
+        {{Model}}::insert(${{model}}s->toArray());
     }
 
 }
+
