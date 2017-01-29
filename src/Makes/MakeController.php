@@ -46,14 +46,14 @@ class MakeController
 
         if ($this->files->exists($path)) 
         {
-            return $this->scaffoldCommandObj->comment("x $name");
+            return $this->scaffoldCommandObj->comment("x Controller. File:" . $path);
         }
 
         $this->makeDirectory($path);
 
         $this->files->put($path, $this->compileControllerStub());
 
-        $this->scaffoldCommandObj->info('+ Controller');
+        $this->scaffoldCommandObj->info('+ Controller. File:' . $path);
     }
 
     /**

@@ -52,26 +52,15 @@ class MakeFormRequest
 
         if ($this->files->exists($path)) 
         {
-            return $this->scaffoldCommandObj->comment("x $name");
+            return $this->scaffoldCommandObj->comment("x FormRequest. File: $name");
         }
 
         $this->makeDirectory($path);
 
         $this->files->put($path, $this->compileStub($stubname));
 
-        $this->scaffoldCommandObj->info('+ ' . $name);
+        $this->scaffoldCommandObj->info('+ FormRequest. File: ' . $name);
     }
-
-    protected function compileStub($filename)
-    {
-        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/'.$filename.'.stub');
-
-        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
-        // $this->replaceValidator($stub);
-
-        return $stub;
-    }
-
 
     // /**
     //  * Replace validator in the controller stub.

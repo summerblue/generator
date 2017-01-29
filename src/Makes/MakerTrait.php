@@ -183,6 +183,10 @@ trait MakerTrait
         {
             return './app/Policies/'.$file_name.'.php';
         }
+        elseif($path == "factory")
+        {
+            return './database/factories/ModelFactory.php';
+        }
         elseif($path == "model")
         {
             return './app/Models/'.$file_name.'.php';
@@ -241,5 +245,15 @@ trait MakerTrait
         {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
+    }
+
+    protected function compileStub($filename)
+    {
+        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/'.$filename.'.stub');
+
+        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
+        // $this->replaceValidator($stub);
+
+        return $stub;
     }
 }
