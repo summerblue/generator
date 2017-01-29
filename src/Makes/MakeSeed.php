@@ -48,10 +48,10 @@ class MakeSeed
 
         if (strpos($this->files->get($path), "App\Models\\$name") === false) {
             $this->files->append($path, $this->compileStub('factory'));
-            return $this->scaffoldCommandObj->info("+ ModelFactory Updated successfully. File: $path");
+            return $this->scaffoldCommandObj->info("+ $path");
         }
         
-        return $this->scaffoldCommandObj->comment("x ModelFactory Updated Skipped. File: $path");
+        return $this->scaffoldCommandObj->comment("x $path");
     }
 
     protected function generateSeed()
@@ -60,12 +60,12 @@ class MakeSeed
 
         if ($this->files->exists($path))
         {
-            return $this->scaffoldCommandObj->comment('x Seed. File: ' . $path);
+            return $this->scaffoldCommandObj->comment('x ' . $path);
         }
 
         $this->makeDirectory($path);
         $this->files->put($path, $this->compileStub('seed'));
-        $this->scaffoldCommandObj->info('+ Seed. File:' . $path);
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
 }

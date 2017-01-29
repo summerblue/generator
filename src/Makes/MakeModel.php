@@ -48,12 +48,12 @@ class MakeModel
 
         if ($this->files->exists($path)) 
         {
-            return $this->scaffoldCommandObj->comment("x $name");
+            return $this->scaffoldCommandObj->comment("x $path");
         }
 
         $this->files->put($path, $this->compileModelStub());
 
-        $this->scaffoldCommandObj->info('+ Model');
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
     /**
@@ -104,10 +104,10 @@ class MakeModel
         if (!$this->files->exists($base_model_path)) 
         {
             $this->files->put($base_model_path, $this->compileBaseModelStub());
-            return $this->scaffoldCommandObj->info("+ BasicModel");
+            return $this->scaffoldCommandObj->info("+ $base_model_path". ' (Updated)');
         }
 
-        return $this->scaffoldCommandObj->comment("x BasicModel (Skip)");
+        return $this->scaffoldCommandObj->comment("x $base_model_path" . ' (Skipped)');
     }
 
     protected function compileBaseModelStub()
@@ -132,10 +132,10 @@ class MakeModel
             }
 
             $this->files->put($path, $this->compileModelTraitStub());
-            return $this->scaffoldCommandObj->info("+ Model Trait");
+            return $this->scaffoldCommandObj->info("+ ". $path);
         }
 
-        return $this->scaffoldCommandObj->comment("x Model Trait (Skip)");
+        return $this->scaffoldCommandObj->comment("x " . $path);
     }
 
     protected function compileModelTraitStub()

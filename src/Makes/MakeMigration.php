@@ -49,12 +49,12 @@ class MakeMigration
 
         if ($this->files->exists($path = $this->getPath($name)))
         {
-            return $this->scaffoldCommandObj->error($this->type.' already exists!');
+            return $this->scaffoldCommandObj->comment('x ' . $path);
         }
 
         $this->makeDirectory($path);
         $this->files->put($path, $this->compileMigrationStub());
-        $this->scaffoldCommandObj->info('+ Migration');
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
     /**

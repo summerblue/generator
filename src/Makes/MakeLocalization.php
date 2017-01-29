@@ -48,11 +48,11 @@ class MakeLocalization
 
         if ($this->files->exists($path))
         {
-            return $this->scaffoldCommandObj->comment('x Localization');
+            return $this->scaffoldCommandObj->comment('x ' . $path);
         }
 
         $this->files->put($path, $this->compileLocalizationStub());
-        $this->scaffoldCommandObj->info('+ Localization');
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
     /**

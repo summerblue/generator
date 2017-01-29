@@ -54,14 +54,14 @@ class MakePolicy
 
         if ($this->files->exists($path)) 
         {
-            return $this->scaffoldCommandObj->comment("x $name");
+            return $this->scaffoldCommandObj->comment("x " . $path);
         }
 
         $this->makeDirectory($path);
 
         $this->files->put($path, $this->compileStub($stubname));
 
-        $this->scaffoldCommandObj->info('+ ' . $name);
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
     protected function compileStub($filename)
@@ -93,10 +93,10 @@ class MakePolicy
                 );
             $this->files->put($path, $content);
 
-            return $this->scaffoldCommandObj->info('+ Policy Register successfully.');
+            return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
         }
         
-        return $this->scaffoldCommandObj->comment("x Policy Register Skipped.");
+        return $this->scaffoldCommandObj->comment("x " . $path . ' (Skipped)');
     }
 
 

@@ -47,10 +47,10 @@ class MakeRoute
         
         if (strpos($this->files->get($path), $stub) === false) {
             $this->files->append($path, $this->compileRouteStub());
-            return $this->scaffoldCommandObj->info('+ Routes Updated successfully.');
+            return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
         }
         
-        return $this->scaffoldCommandObj->comment("x Routes Updated Skipped.");
+        return $this->scaffoldCommandObj->comment("x $path" . ' (Skipped)');
     }
 
     /**

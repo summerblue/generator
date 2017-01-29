@@ -52,14 +52,14 @@ class MakeFormRequest
 
         if ($this->files->exists($path)) 
         {
-            return $this->scaffoldCommandObj->comment("x FormRequest. File: $name");
+            return $this->scaffoldCommandObj->comment("x $path" . ' (Skipped)');
         }
 
         $this->makeDirectory($path);
 
         $this->files->put($path, $this->compileStub($stubname));
 
-        $this->scaffoldCommandObj->info('+ FormRequest. File: ' . $name);
+        $this->scaffoldCommandObj->info('+ ' . $path);
     }
 
     // /**

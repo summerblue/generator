@@ -57,13 +57,13 @@ class MakeLayout
 
         if ($this->files->exists($path_file))
         {
-            return $this->scaffoldCommandObj->comment("x $name (Skip)");
+            return $this->scaffoldCommandObj->comment("x $path_file");
         }
 
         $html = $this->files->get($path_stub);
         $html = $this->buildStub($this->scaffoldCommandObj->getMeta(), $html);
         $this->files->put($path_file, $html);
-        $this->scaffoldCommandObj->info("+ $name");
+        $this->scaffoldCommandObj->info("+ $path_file");
     }
 
     /**
