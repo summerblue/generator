@@ -39,6 +39,7 @@ class MakeSeed
     {
         $this->generateFactory();
         $this->generateSeed();
+        $this->updateDatabaseSeeder();
     }
 
     protected function generateFactory()
@@ -66,6 +67,27 @@ class MakeSeed
         $this->makeDirectory($path);
         $this->files->put($path, $this->compileStub('seed'));
         $this->scaffoldCommandObj->info('+ ' . $path);
+    }
+
+    protected function updateDatabaseSeeder()
+    {
+        $path = './database/seeds/DatabaseSeeder.php';
+        $content = $this->files->get($path);
+        $name = $this->scaffoldCommandObj->getObjName('Name') . 'TableSeeder';
+
+        if (strpos($content, $name) === false) {
+
+            $content = str_replace(
+                '::class);',
+                "::class);\n\t\t\$this->call($name::class);",
+                $content
+                );
+            $this->files->put($path, $content);
+
+            return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
+        }
+        
+        return $this->scaffoldCommandObj->comment("x " . $path . ' (Skipped)');
     }
 
 }
