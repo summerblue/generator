@@ -47,6 +47,7 @@ class {{Model}}Controller extends Controller
 
 	public function update({{Model}}UpdateRequest $request, {{Model}} ${{model}})
 	{
+		$this->authorize('update', ${{model}});
 		$inputs = $request->all();
 		${{model}}->updateWithInput($inputs);
 
@@ -55,6 +56,7 @@ class {{Model}}Controller extends Controller
 
 	public function destroy({{Model}} ${{model}})
 	{
+		$this->authorize('destroy', ${{model}});
 		${{model}}->delete();
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');

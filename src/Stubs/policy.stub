@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\User;
+use App\Models\{{Model}};
+
+class {{Model}}Policy extends Policy
+{
+    public function update(User $user, {{Model}} ${{model}})
+    {
+        // return ${{model}}->user_id == $user->id;
+        return true;
+    }
+
+    public function destroy(User $user, {{Model}} ${{model}})
+    {
+        return true;
+    }
+}
