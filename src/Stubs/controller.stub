@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use {{namespace}}Models\{{Model}};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\{{Model}}UpdateRequest;
+use App\Http\Requests\{{Model}}StoreRequest;
 
 class {{Model}}Controller extends Controller
 {
@@ -25,7 +27,7 @@ class {{Model}}Controller extends Controller
 		return view('{{models}}.create');
 	}
 
-	public function store(Request $request)
+	public function store({{Model}}StoreRequest $request)
 	{
 		$inputs = $request->all();
 		{{Model}}::createWithInput($inputs);
@@ -43,7 +45,7 @@ class {{Model}}Controller extends Controller
 		return view('{{models}}.edit', compact('{{model}}'));
 	}
 
-	public function update(Request $request, {{Model}} ${{model}})
+	public function update({{Model}}UpdateRequest $request, {{Model}} ${{model}})
 	{
 		$inputs = $request->all();
 		${{model}}->updateWithInput($inputs);

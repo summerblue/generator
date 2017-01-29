@@ -175,6 +175,10 @@ trait MakerTrait
         {
             return './app/Http/Controllers/' . $file_name . '.php';
         }
+        elseif($path == "request")
+        {
+            return './app/Http/Requests/'.$file_name.'.php';
+        }
         elseif($path == "model")
         {
             return './app/Models/'.$file_name.'.php';

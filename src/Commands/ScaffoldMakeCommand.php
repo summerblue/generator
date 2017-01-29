@@ -15,6 +15,7 @@ use Laralib\L5scaffold\Makes\MakeRoute;
 use Laralib\L5scaffold\Makes\MakerTrait;
 use Laralib\L5scaffold\Makes\MakeSeed;
 use Laralib\L5scaffold\Makes\MakeView;
+use Laralib\L5scaffold\Makes\MakeFormRequest;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -89,6 +90,7 @@ class ScaffoldMakeCommand extends Command
         $this->makeSeed();
         $this->makeModel();
         $this->makeController();
+        $this->makeFormRequest();
         $this->makeRoute();
         // $this->makeLocalization(); //ToDo - implement in future version
         $this->makeViews();
@@ -206,6 +208,11 @@ class ScaffoldMakeCommand extends Command
     private function makeLocalization()
     {
         new MakeLocalization($this, $this->files);
+    }
+
+    private function makeFormRequest()
+    {
+        new MakeFormRequest($this, $this->files);
     }
 
     /**
