@@ -1,6 +1,6 @@
 <?php
 
-namespace Laralib\L5scaffold\Tests;
+namespace Summerblue\Generator\Tests;
 
 use PHPUnit_Framework_TestCase as PHPUnit;
 
@@ -36,7 +36,7 @@ class CommandTest extends PHPUnit
 	{
 		$this->app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
 		
-		$this->app->register('Laralib\L5scaffold\GeneratorsServiceProvider');
+		$this->app->register('Summerblue\Generator\GeneratorsServiceProvider');
 
         $this->app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 	}

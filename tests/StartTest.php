@@ -1,6 +1,6 @@
 <?php
 
-namespace Laralib\L5scaffold\Tests;
+namespace Summerblue\Generator\Tests;
 
 use PHPUnit_Framework_TestCase as PHPUnit;
 

@@ -6,10 +6,10 @@
  * Time: 10:34 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Summerblue\Generator\Makes;
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
+use Summerblue\Generator\Commands\ScaffoldMakeCommand;
 
 class MakeSeed
 {

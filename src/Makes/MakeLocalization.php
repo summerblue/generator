@@ -6,12 +6,12 @@
  * Time: 10:34 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Summerblue\Generator\Makes;
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
-use Laralib\L5scaffold\Localizations\SchemaParser as LocalizationsParser;
-use Laralib\L5scaffold\Localizations\SyntaxBuilder as LocalizationsBuilder;
+use Summerblue\Generator\Commands\ScaffoldMakeCommand;
+use Summerblue\Generator\Localizations\SchemaParser as LocalizationsParser;
+use Summerblue\Generator\Localizations\SyntaxBuilder as LocalizationsBuilder;
 
 class MakeLocalization
 {

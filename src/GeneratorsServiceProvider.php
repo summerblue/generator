@@ -1,6 +1,6 @@
 <?php
 
-namespace Laralib\L5scaffold;
+namespace Summerblue\Generator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -35,7 +35,7 @@ class GeneratorsServiceProvider extends ServiceProvider
 	private function registerScaffoldGenerator()
 	{
 		$this->app->singleton('command.larascaf.scaffold', function ($app) {
-			return $app['Laralib\L5scaffold\Commands\ScaffoldMakeCommand'];
+			return $app['Summerblue\Generator\Commands\ScaffoldMakeCommand'];
 		});
 
 		$this->commands('command.larascaf.scaffold');

@@ -1,10 +1,10 @@
 <?php
 
-namespace Laralib\L5scaffold\Localizations;
+namespace Summerblue\Generator\Localizations;
 
 /**
  * Class SchemaParser
- * @package Laralib\L5scaffold\Migrations
+ * @package Summerblue\Generator\Migrations
  * @author Ryan Gurnick <ryangurnick@gmail.com>
  */
 class SchemaParser

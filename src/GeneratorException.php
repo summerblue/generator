@@ -1,6 +1,6 @@
 <?php
 
-namespace Laralib\L5scaffold;
+namespace Summerblue\Generator;
 
 class GeneratorException extends \Exception {
 

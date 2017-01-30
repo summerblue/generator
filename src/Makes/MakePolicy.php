@@ -1,11 +1,11 @@
 <?php
-namespace Laralib\L5scaffold\Makes;
+namespace Summerblue\Generator\Makes;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
-use Laralib\L5scaffold\Validators\SchemaParser as ValidatorParser;
-use Laralib\L5scaffold\Validators\SyntaxBuilder as ValidatorSyntax;
+use Summerblue\Generator\Commands\ScaffoldMakeCommand;
+use Summerblue\Generator\Validators\SchemaParser as ValidatorParser;
+use Summerblue\Generator\Validators\SyntaxBuilder as ValidatorSyntax;
 
 class MakePolicy
 {

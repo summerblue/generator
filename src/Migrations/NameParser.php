@@ -1,10 +1,10 @@
 <?php
 
-namespace Laralib\L5scaffold\Migrations;
+namespace Summerblue\Generator\Migrations;
 
 /**
  * Class NameParser
- * @package Laralib\L5scaffold\Migrations with modifications by Fernando
+ * @package Summerblue\Generator\Migrations with modifications by Fernando
  * @author Jeffrey Way <jeffrey@jeffrey-way.com>
  */
 class NameParser

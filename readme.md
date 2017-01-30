@@ -7,7 +7,7 @@
 ### Step 1: Install Through Composer
 
 ```
-composer require 'laralib/l5scaffold' --dev
+composer require 'summerblue/generator' --dev
 ```
 
 ### Step 2: Add the Service Provider
@@ -15,7 +15,7 @@ composer require 'laralib/l5scaffold' --dev
 Open `config/app.php` and, to your **providers** array at the bottom, add:
 
 ```
-Laralib\L5scaffold\GeneratorsServiceProvider::class
+Summerblue\Generator\GeneratorsServiceProvider::class
 ```
 
 ### Step 3: Run Artisan!

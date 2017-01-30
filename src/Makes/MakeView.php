@@ -6,12 +6,12 @@
  * Time: 4:58 PM
  */
 
-namespace Laralib\L5scaffold\Makes;
+namespace Summerblue\Generator\Makes;
 
 use Illuminate\Filesystem\Filesystem;
-use Laralib\L5scaffold\Commands\ScaffoldMakeCommand;
-use Laralib\L5scaffold\Migrations\SchemaParser;
-use Laralib\L5scaffold\Migrations\SyntaxBuilder;
+use Summerblue\Generator\Commands\ScaffoldMakeCommand;
+use Summerblue\Generator\Migrations\SchemaParser;
+use Summerblue\Generator\Migrations\SyntaxBuilder;
 
 class MakeView
 {

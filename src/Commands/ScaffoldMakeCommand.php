@@ -1,22 +1,22 @@
 <?php
 
-namespace Laralib\L5scaffold\Commands;
+namespace Summerblue\Generator\Commands;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Input;
-use Laralib\L5scaffold\Makes\MakeController;
-use Laralib\L5scaffold\Makes\MakeLayout;
-use Laralib\L5scaffold\Makes\MakeLocalization;
-use Laralib\L5scaffold\Makes\MakeMigration;
-use Laralib\L5scaffold\Makes\MakeModel;
-use Laralib\L5scaffold\Makes\MakeRoute;
-use Laralib\L5scaffold\Makes\MakerTrait;
-use Laralib\L5scaffold\Makes\MakeSeed;
-use Laralib\L5scaffold\Makes\MakeView;
-use Laralib\L5scaffold\Makes\MakeFormRequest;
-use Laralib\L5scaffold\Makes\MakePolicy;
+use Summerblue\Generator\Makes\MakeController;
+use Summerblue\Generator\Makes\MakeLayout;
+use Summerblue\Generator\Makes\MakeLocalization;
+use Summerblue\Generator\Makes\MakeMigration;
+use Summerblue\Generator\Makes\MakeModel;
+use Summerblue\Generator\Makes\MakeRoute;
+use Summerblue\Generator\Makes\MakerTrait;
+use Summerblue\Generator\Makes\MakeSeed;
+use Summerblue\Generator\Makes\MakeView;
+use Summerblue\Generator\Makes\MakeFormRequest;
+use Summerblue\Generator\Makes\MakePolicy;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
