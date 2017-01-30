@@ -84,7 +84,7 @@ class MakeView
             $metas,
             [
                 'form_fields_fillable' => $this->getFields($metas['ui'], 'fillable'),
-                'form_fields_empty' => $this->getFields($metas['ui'], 'empty'),
+                'form_fields_empty' => $this->getFields($metas['ui'], 'fillable'),
                 'form_fields_show' => $this->getFields($metas['ui'], 'show'),
                 'table_fields_header' => $this->getFields($metas['ui'], 'header'),
                 'table_fields_content' => $this->getFields($metas['ui'], 'content'),

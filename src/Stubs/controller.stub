@@ -18,7 +18,6 @@ class {{Model}}Controller extends Controller
 	public function index()
 	{
 		${{models}} = {{Model}}::paginate();
-
 		return view('{{models}}.index', compact('{{models}}'));
 	}
 
@@ -29,9 +28,7 @@ class {{Model}}Controller extends Controller
 
 	public function store({{Model}}StoreRequest $request)
 	{
-		$inputs = $request->all();
-		{{Model}}::createWithInput($inputs);
-
+		{{Model}}::createWithInput($request->all());
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
 	}
 
@@ -48,8 +45,7 @@ class {{Model}}Controller extends Controller
 	public function update({{Model}}UpdateRequest $request, {{Model}} ${{model}})
 	{
 		$this->authorize('update', ${{model}});
-		$inputs = $request->all();
-		${{model}}->updateWithInput($inputs);
+		${{model}}->updateWithInput($request->all());
 
 		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
 	}
