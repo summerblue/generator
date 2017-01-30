@@ -22,9 +22,9 @@ class {{Model}}Controller extends Controller
 		return view('{{models}}.index', compact('{{models}}'));
 	}
 
-	public function create()
+	public function create({{Model}} ${{model}})
 	{
-		return view('{{models}}.create');
+		return view('{{models}}.create_and_edit', compact('{{model}}'));
 	}
 
 	public function store({{Model}}StoreRequest $request)
@@ -42,7 +42,7 @@ class {{Model}}Controller extends Controller
 
 	public function edit({{Model}} ${{model}})
 	{
-		return view('{{models}}.edit', compact('{{model}}'));
+		return view('{{models}}.create_and_edit', compact('{{model}}'));
 	}
 
 	public function update({{Model}}UpdateRequest $request, {{Model}} ${{model}})

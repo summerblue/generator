@@ -5,14 +5,26 @@
 <div class="container">
     <div class="panel panel-default col-md-10 col-md-offset-1">
         <div class="panel-heading">
-            <h1><i class="glyphicon glyphicon-edit"></i> {{Model}} / Edit #{{${{model}}->id}}</h1>
+            <h1>
+                <i class="glyphicon glyphicon-edit"></i> {{Model}} / 
+                @if(${{model}}->id)
+                    Edit #{{${{model}}->id}}
+                @else
+                    Create 
+                @endif
+            </h1>
         </div>
 
         @include('error')
 
         <div class="panel-body">
-            <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST">
-                <input type="hidden" name="_method" value="PUT">
+            @if(${{model}}->id)
+                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+            @else
+                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST">
+            @endif
+
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 {{form_fields_fillable}}
