@@ -1,7 +1,8 @@
 # Laravel 5.x Scaffold Generator
 
-[![Packagist](https://img.shields.io/packagist/dt/summerblue/generator.svg?style=flat-square)](https://packagist.org/packages/laralib/l5scaffold)
-[![Tag](https://img.shields.io/github/tag/summerblue/generator.svg)](https://github.com/laralib/l5scaffold/tags)
+[![Travis](https://img.shields.io/travis/summerblue/generator.svg?style=flat-square)](https://github.com/summerblue/generator)
+[![Packagist](https://img.shields.io/packagist/dt/summerblue/generator.svg?style=flat-square)](https://packagist.org/packages/summerblue/generator)
+[![Tag](https://img.shields.io/github/tag/summerblue/generator.svg)](https://github.com/summerblue/generator/tags)
 
 Laravel Scaffold Generator, for Laravel 5.3.
 
