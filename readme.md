@@ -1,8 +1,10 @@
 # Laravel 5.x Scaffold Generator
+
 [![Travis](https://img.shields.io/travis/laralib/l5scaffold.svg?style=flat-square)](https://github.com/laralib/l5scaffold)
 [![Packagist](https://img.shields.io/packagist/dt/laralib/l5scaffold.svg?style=flat-square)](https://packagist.org/packages/laralib/l5scaffold)
 [![Tag](https://img.shields.io/github/tag/laralib/l5scaffold.svg)](https://github.com/laralib/l5scaffold/tags)
-## Usage
+
+## Install
 
 ### Step 1: Install Through Composer
 
@@ -12,10 +14,17 @@ composer require 'summerblue/generator' --dev
 
 ### Step 2: Add the Service Provider
 
-Open `config/app.php` and, to your **providers** array at the bottom, add:
+Open `/app/Providers/AppServiceProvider.php` and, to your **register** function, add:
 
 ```
-Summerblue\Generator\GeneratorsServiceProvider::class
+public function register()
+{
+     if (app()->environment() == 'local' || app()->environment() == 'testing') {
+
+        $this->app->register(\Summerblue\Generator\GeneratorsServiceProvider::class);
+
+    }
+}
 ```
 
 ### Step 3: Run Artisan!
@@ -24,62 +33,64 @@ You're all set. Run `php artisan` from the console, and you'll see the new comma
 
 ## Examples
 
-Use this command to generator scaffolding of **Tweet** in your project:
-```
-php artisan make:scaffold Tweet \
-	--schema="title:string:default('Tweet #1'), body:text"
-```
-or with more options
-```
-php artisan make:scaffold Tweet \
-	--schema="title:string:default('Tweet #1'), body:text" \
-	--ui="bs3" \
-	--prefix="admin"
-```
+Use this command to generator scaffolding of **Project** in your project:
+
+> php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned,default(0)"
 
 This command will generate:
 
 ```
-app/Tweet.php
-app/Http/Controllers/TweetController.php
+$ php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned,default(0)"
 
-database/migrations/201x_xx_xx_xxxxxx_create_tweets_table.php
-database/seeds/TweetTableSeeder.php
+----------- scaffolding: Project -----------
 
-resources/views/layout.blade.php
-resources/views/tweets/index.blade.php
-resources/views/tweets/show.blade.php
-resources/views/tweets/edit.blade.php
-resources/views/tweets/create.blade.php
++ ./database/migrations/2017_01_30_233548_create_projects_table.php
++ ./database/factories/ModelFactory.php
++ ./database/seeds/ProjectTableSeeder.php
++ ./database/seeds/DatabaseSeeder.php (Updated)
++ ./app/Models/Model.php (Updated)
++ ./app/Models/Traits/ProjectOperation.php
++ ./app/Models/Project.php
++ ./app/Http/Controllers/ProjectController.php
++ ./app/Http/Requests/Request.php
++ ./app/Http/Requests/ProjectStoreRequest.php
++ ./app/Http/Requests/ProjectUpdateRequest.php
++ ./app/Policies/Policy.php
++ ./app/Policies/ProjectPolicy.php
++ ./app/Providers/AuthServiceProvider.php (Updated)
++ ./routes/web.php (Updated)
+
+--- Views ---
+   + create_and_edit.blade.php
+   + index.blade.php
+   + show.blade.php
++ ./resources/views/error.blade.php
+Migrated: 2017_01_30_233548_create_projects_table
+
+----------- -------------------- -----------
+-----------   >DUMP AUTOLOAD<    -----------
 ```
 
-After don't forget to run:
+## Explain
 
+Generate the following:
 
-```
-php artisan migrate
-```
-## Custom stub
-Create a new folder inside **Stubs > views** with your UI name custom 
-![image](http://i66.tinypic.com/10ndpgw.png)
+- Migration
+- Seed, add ModelFactory entry, and DatabaseSeeder entry
+- Base Model class, Model and helper trait
+- Resource Controller
+- Base FormRequest class and StoreRequest, UpdateRequest
+- Policy and Policy base class, auto register AuthServiceProvider class
+- Update routes file to register resource route
+- Add error page view
+- Create and Edit action share the same view
 
-Custom fields in `Stubs > views > **ui-name** > fields`
+## Future Plan
 
-Custom pages in `Stubs > views > **ui-name** > pages`
+- API
+- Admin
+- Auto fill FormRequest rule
+- Auto fill ModelFactory filed
 
-<br>
-
-:thought_balloon: **Send us your ideas.** (creating issues)
-
-
-##Collaborators
- [Fernando Brito](https://github.com/fernandobritofl "fernandobritofl")
- <br/>[Sylvio Tavares](https://github.com/sylviot "Sylviot")
- <br/>[Raphael Heitor](https://github.com/raphaelheitor "raphaelheitor")
- <br/>[Alfred Nutile](https://github.com/alnutile "alnutile")
- <br/>[Sazzad Hossain Khan](https://github.com/itsazzad "itsazzad")
- <br/>[Alexander Makhaev](https://github.com/mankms "mankms")
- <br/>[Adam Brown](https://github.com/DeftNerd "DeftNerd")
- <br/>[TJ Webb](https://github.com/webbtj "webbtj")
- <br/>[Tsaganos Tolis](https://github.com/Dev-Force "Dev-Force")
- <br/>[Ryan Gurnick](https://github.com/ryangurn "ryangurn")
+## Thinks to
+- [laralib/l5scaffold](https://github.com/laralib/l5scaffold)

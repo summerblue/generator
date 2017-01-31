@@ -16,10 +16,9 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "laravel/framework": "5.3.*"
+    "laravel/laravel": "5.3.*"
   },
   "require-dev": {
-    "laravel/laravel": "dev-master",
     "phpunit/phpunit": "^5.4"
   },
   "autoload": {
