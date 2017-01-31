@@ -15,12 +15,13 @@ class CommandTest extends PHPUnit
 	protected $app;
 	protected $filesystem;
 	protected $folders;
+	protected $files;
 
 	public function setUp()
 	{
 		parent::setUp();
 		
-		$this->prepareFolderStructure();
+		$this->prepareFilesystem();
 
 		$this->createApplication();
 
@@ -29,7 +30,7 @@ class CommandTest extends PHPUnit
 
 	public function tearDown()
 	{
-		$this->unmontFolderStructure();
+		$this->cleanFilesystem();
 	}
 
 	public function createApplication()
@@ -41,17 +42,31 @@ class CommandTest extends PHPUnit
         $this->app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 	}
 
-	public function prepareFolderStructure()
+	public function prepareFilesystem()
 	{
 		$this->filesystem = new Filesystem();
 
-		 $this->folders = 
+		$this->folders = 
 		[
+			'routes', 
 			'app/Http/Controllers', 
+			'app/Models', 
+			'app/Providers',
 			'database/seeds', 
 			'database/migrations',
-			'resources/views'
+			'database/factories',
+			'resources/views',
 		];
+
+		$this->files = 
+		[
+			'./database/factories/ModelFactory.php',
+			'./database/seeds/DatabaseSeeder.php',
+			'./app/Models/Model.php',
+			'./app/Providers/AuthServiceProvider.php',
+			'./routes/web.php',
+		];
+
 	}
 
 	public function mountFolderStructure()
@@ -60,9 +75,15 @@ class CommandTest extends PHPUnit
 		{
 			$this->filesystem->makeDirectory($folder, 0777, true, true);
 		}
+
+
+		foreach($this->files as $file)
+		{
+			$this->filesystem->put($file, '<?php');
+		}
 	}
 
-	public function unmontFolderStructure()
+	public function cleanFilesystem()
 	{
 		foreach ($this->folders as $folder) 
 		{
@@ -76,7 +97,6 @@ class CommandTest extends PHPUnit
 		[
         	'name' => 'Tweet', 
         	'--schema' => 'title:string',
-			'--validator' => 'title:required|unique:tweets,id',
         	'--no-interaction'
     	]);
 
@@ -84,8 +104,6 @@ class CommandTest extends PHPUnit
 		[
 			'name' => 'Tweet2',
 			'--schema' => 'title:string',
-			'--localization' => 'title:required',
-			'--lang' => 'fr',
 			'--no-interaction'
 		]);
 	}
