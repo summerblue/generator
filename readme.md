@@ -4,6 +4,8 @@
 [![Packagist](https://img.shields.io/packagist/dt/laralib/l5scaffold.svg?style=flat-square)](https://packagist.org/packages/laralib/l5scaffold)
 [![Tag](https://img.shields.io/github/tag/laralib/l5scaffold.svg)](https://github.com/laralib/l5scaffold/tags)
 
+Laravel Scaffold Generator, for Laravel 5.3
+
 ## Install
 
 ### Step 1: Install Through Composer
