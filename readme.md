@@ -94,5 +94,9 @@ Generate the following:
 - Auto fill FormRequest rule
 - Auto fill ModelFactory filed
 
+## Screenshot
+
+![file](https://dn-phphub.qbox.me/uploads/images/201701/31/1/eL5NDDrtK5.png)
+
 ## Thinks to
 - [laralib/l5scaffold](https://github.com/laralib/l5scaffold)
