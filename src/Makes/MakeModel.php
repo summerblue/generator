@@ -103,6 +103,7 @@ class MakeModel
         $base_model_path = $this->getPath("Model", 'model');
         if (!$this->files->exists($base_model_path)) 
         {
+            $this->makeDirectory($base_model_path);
             $this->files->put($base_model_path, $this->compileBaseModelStub());
             return $this->scaffoldCommandObj->info("+ $base_model_path". ' (Updated)');
         }
