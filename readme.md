@@ -96,7 +96,7 @@ Generate the following:
 
 ## Screenshot
 
-![file](https://dn-phphub.qbox.me/uploads/images/201701/31/1/eL5NDDrtK5.png)
+![file](https://cloud.githubusercontent.com/assets/324764/22488519/7466a638-e84d-11e6-8201-99ad377d6270.png)
 
 ## Thinks to
 - [laralib/l5scaffold](https://github.com/laralib/l5scaffold)
