@@ -20,7 +20,7 @@
             @include('layouts._errors')
 
              @if(${{model}}->id)
-                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" class="ui form" rmethod="POST">
+                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" class="ui form" method="POST">
                     <input type="hidden" name="_method" value="PUT">
             @else
                 <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" class="ui form">
