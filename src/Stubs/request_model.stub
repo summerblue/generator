@@ -8,12 +8,14 @@ class {{Model}}Request extends Request
     {
         switch($this->method())
         {
+            // CREATE
             case 'POST':
             {
                 return [
                     // CREATE ROLES
                 ];
             }
+            // UPDATE
             case 'PUT':
             case 'PATCH':
             {
