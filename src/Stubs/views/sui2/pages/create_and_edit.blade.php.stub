@@ -1,0 +1,43 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="ui centered grid container">
+    <div class="twelve wide column">
+      <div class="ui stacked segment">
+        <div class="content">
+            <h1>
+                <i class="icon edit"></i> {{Model}} /
+                @if(${{model}}->id)
+                    Edit #{{${{model}}->id}}
+                @else
+                    Create
+                @endif
+            </h1>
+
+            <div class="ui divider"></div>
+
+            @include('layouts._errors')
+
+             @if(${{model}}->id)
+                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" class="ui form" rmethod="POST">
+                    <input type="hidden" name="_method" value="PUT">
+            @else
+                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" class="ui form">
+            @endif
+
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                {{form_fields_fillable}}
+
+                <div class="ui message">
+                    <button type="submit" class="ui button primary">Save</button>
+                    <a class="ui button right floated" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="icon backward"></i>  Back</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+@endsection

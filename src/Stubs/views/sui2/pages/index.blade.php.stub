@@ -1,0 +1,66 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="ui centered grid container">
+    <div class="sixteen wide column">
+      <div class="ui stacked segment">
+        <div class="content">
+            <h1>
+                <i class="list layout icon"></i>
+                {{Model}}
+                <a class="ui icon button basic right floated" href="{{ route('{{prefix}}{{models}}.create') }}"><i class="icon plus"></i> Create</a>
+            </h1>
+
+            <div class="ui divider"></div>
+
+            @include('layouts._errors')
+
+            @if(${{models}}->count())
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th class="centered">#</th>
+                            {{table_fields_header}}
+                            <th class="text-right">OPTIONS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach(${{models}} as ${{model}})
+                            <tr>
+                                <td class="centered"><strong>{{${{model}}->id}}</strong></td>
+
+                                {{table_fields_content}}
+
+                                <td class="text-right">
+                                    <a class="ui icon button primary" href="{{ route('{{prefix}}{{models}}.show', ${{model}}->id) }}">
+                                        <i class="icon unhide"></i>
+                                    </a>
+
+                                    <a class="ui icon button yellow" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}">
+                                        <i class="icon edit"></i>
+                                    </a>
+
+                                    <form action="{{ route('{{prefix}}{{models}}.destroy', ${{model}}->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <button type="submit" class="ui icon button red"><i class="icon trash"></i> </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {!! ${{models}}->render() !!}
+            @else
+                <h3 class="text-center alert alert-info">Empty!</h3>
+            @endif
+
+        </div>
+      </div>
+    </div>
+</div>
+
+@endsection

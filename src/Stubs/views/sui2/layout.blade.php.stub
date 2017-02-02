@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- JavaScripts -->
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Lato:400&subset=latin');
+    </style>
+    <title>
+      @unless(Route::getCurrentRoute()->getPath() == '/')
+         - @yield('title')
+      @endif
+    </title>
+</head>
+<body id="example" class="index pushable" ontouchstart>
+  <div id="pusher" class="ui pusher">
+    <div id="header" class="ui padded vertical clearing segment">
+    @yield('header')
+    </div>
+    <div id="content" class="ui padded vertical clearing segment">
+    @yield('content')
+    </div>
+  </div>
+</body>
+</html>

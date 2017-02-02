@@ -1,0 +1,26 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="ui centered grid container">
+    <div class="twelve wide column">
+      <div class="ui piled segment">
+        <div class="content">
+            <h1>
+                {{Model}} / Show #{{${{model}}->id}}
+            </h1>
+
+            <div class="ui divider"></div>
+
+            <div class="ui message">
+                <a class="ui basic button" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="icon backward"></i>  Back</a>
+                <a class="ui basic button right floated" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}"><i class="icon edit"></i>  Edit</a>
+            </div>
+
+            {{form_fields_show}}
+        </div>
+      </div>
+    </div>
+</div>
+
+@endsection
