@@ -42,15 +42,14 @@ class MakeFormRequest
     {
         $name = $this->scaffoldCommandObj->getObjName('Name');
         $this->makeRequest('Request', 'request');
-        $this->makeRequest($name . 'StoreRequest', 'request_store');
-        $this->makeRequest($name . 'UpdateRequest', 'request_update');
+        $this->makeRequest($name . 'Request', 'request_model');
     }
 
     protected function makeRequest($name, $stubname)
     {
         $path = $this->getPath($name, 'request');
 
-        if ($this->files->exists($path)) 
+        if ($this->files->exists($path))
         {
             return $this->scaffoldCommandObj->comment("x $path" . ' (Skipped)');
         }
