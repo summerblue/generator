@@ -1,2 +1,2 @@
-<h4 class="ui header">Divider</h4>
+<h4 class="ui header">{{field.Name}}</h4>
 <p>{{ ${{model}}->{{field.name}} }}</p>
