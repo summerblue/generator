@@ -6,11 +6,11 @@
     <div class="panel panel-default col-md-10 col-md-offset-1">
         <div class="panel-heading">
             <h1>
-                <i class="glyphicon glyphicon-edit"></i> {{Model}} / 
+                <i class="glyphicon glyphicon-edit"></i> {{Model}} /
                 @if(${{model}}->id)
                     Edit #{{${{model}}->id}}
                 @else
-                    Create 
+                    Create
                 @endif
             </h1>
         </div>
@@ -19,10 +19,10 @@
 
         <div class="panel-body">
             @if(${{model}}->id)
-                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST">
+                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST" accept-charset="UTF-8">
                     <input type="hidden" name="_method" value="PUT">
             @else
-                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST">
+                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" accept-charset="UTF-8">
             @endif
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

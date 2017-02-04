@@ -20,10 +20,10 @@
             @include('layouts._errors')
 
              @if(${{model}}->id)
-                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" class="ui form" method="POST">
+                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" class="ui form" method="POST" accept-charset="UTF-8">
                     <input type="hidden" name="_method" value="PUT">
             @else
-                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" class="ui form">
+                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" class="ui form" accept-charset="UTF-8">
             @endif
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

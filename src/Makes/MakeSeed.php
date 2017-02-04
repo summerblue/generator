@@ -51,13 +51,13 @@ class MakeSeed
             $this->files->append($path, $this->compileStub('factory'));
             return $this->scaffoldCommandObj->info("+ $path");
         }
-        
+
         return $this->scaffoldCommandObj->comment("x $path");
     }
 
     protected function generateSeed()
     {
-        $path = $this->getPath($this->scaffoldCommandObj->getObjName('Name') . 'TableSeeder', 'seed');
+        $path = $this->getPath($this->scaffoldCommandObj->getObjName('Name') . 'sTableSeeder', 'seed');
 
         if ($this->files->exists($path))
         {
@@ -73,20 +73,20 @@ class MakeSeed
     {
         $path = './database/seeds/DatabaseSeeder.php';
         $content = $this->files->get($path);
-        $name = $this->scaffoldCommandObj->getObjName('Name') . 'TableSeeder';
+        $name = $this->scaffoldCommandObj->getObjName('Name') . 'sTableSeeder';
 
         if (strpos($content, $name) === false) {
 
             $content = str_replace(
-                '::class);',
-                "::class);\n\t\t\$this->call($name::class);",
+                '(UsersTableSeeder::class);',
+                "(UsersTableSeeder::class);\n\t\t\$this->call($name::class);",
                 $content
                 );
             $this->files->put($path, $content);
 
             return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
         }
-        
+
         return $this->scaffoldCommandObj->comment("x " . $path . ' (Skipped)');
     }
 

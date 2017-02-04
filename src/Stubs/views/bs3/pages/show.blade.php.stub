@@ -5,7 +5,7 @@
 <div class="container">
     <div class="panel panel-default col-md-10 col-md-offset-1">
         <div class="panel-heading">
-            <h1>{{Model}} / Show #{{${{model}}->id}}</h1>
+            <h1>{{Model}} / Show #{{ ${{model}}->id }}</h1>
         </div>
 
         <div class="panel-body">
@@ -24,7 +24,7 @@
 
             {{form_fields_show}}
         </div>
-        
+
     </div>
 </div>
 
