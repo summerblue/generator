@@ -17,6 +17,7 @@ use Summerblue\Generator\Makes\MakeSeed;
 use Summerblue\Generator\Makes\MakeView;
 use Summerblue\Generator\Makes\MakeFormRequest;
 use Summerblue\Generator\Makes\MakePolicy;
+use Summerblue\Generator\Makes\MakeModelObserver;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -79,7 +80,7 @@ class ScaffoldMakeCommand extends Command
      * @return void
      */
     public function fire()
-    {        
+    {
         $header = "scaffolding: {$this->getObjName("Name")}";
         $footer = str_pad('', strlen($header), '-');
         $dump = str_pad('>DUMP AUTOLOAD<', strlen($header), ' ', STR_PAD_BOTH);
@@ -92,19 +93,20 @@ class ScaffoldMakeCommand extends Command
         $this->makeModel();
         $this->makeController();
         $this->makeFormRequest();
+        $this->makeModelObserver();
         $this->makePolicy();
         $this->makeRoute();
         // $this->makeLocalization(); //ToDo - implement in future version
         $this->makeViews();
         $this->makeViewLayout();
-        
+
         $this->call('migrate');
 
         $this->line("\n----------- $footer -----------");
         $this->comment("----------- $dump -----------");
 
         $this->composer->dumpAutoloads();
-        
+
     }
 
     /**
@@ -112,7 +114,7 @@ class ScaffoldMakeCommand extends Command
      *
      * @return void
      */
-    protected function makeMeta()    
+    protected function makeMeta()
     {
         // ToDo - Verificar utilidade...
         $this->meta['action'] = 'create';
@@ -120,15 +122,15 @@ class ScaffoldMakeCommand extends Command
         $this->meta['table'] = $this->getObjName("names");//obsoleto
 
         $this->meta['ui'] = $this->option('ui');
-        
+
         $this->meta['namespace'] = $this->getAppNamespace();
-        
+
         $this->meta['Model'] = $this->getObjName('Name');
         $this->meta['Models'] = $this->getObjName('Names');
         $this->meta['model'] = $this->getObjName('name');
         $this->meta['models'] = $this->getObjName('names');
         $this->meta['ModelMigration'] = "Create{$this->meta['Models']}Table";
-        
+
         $this->meta['schema'] = $this->option('schema');
         $this->meta['prefix'] = ($prefix = $this->option('prefix')) ? "$prefix." : "";
     }
@@ -152,7 +154,7 @@ class ScaffoldMakeCommand extends Command
     {
         new MakeController($this, $this->files);
     }
-    
+
     /**
      * Make a layout.blade.php with bootstrap
      *
@@ -217,6 +219,11 @@ class ScaffoldMakeCommand extends Command
         new MakeFormRequest($this, $this->files);
     }
 
+    private function makeModelObserver()
+    {
+        new MakeModelObserver($this, $this->files);
+    }
+
     private function makePolicy()
     {
         new MakePolicy($this, $this->files);
@@ -229,7 +236,7 @@ class ScaffoldMakeCommand extends Command
      */
     protected function getArguments()
     {
-        return 
+        return
         [
             ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: Post)'],
         ];
@@ -242,13 +249,13 @@ class ScaffoldMakeCommand extends Command
      */
     protected function getOptions()
     {
-        return 
+        return
         [
             [
-                'schema', 
-                's', 
-                InputOption::VALUE_REQUIRED, 
-                'Schema to generate scaffold files. (Ex: --schema="title:string")', 
+                'schema',
+                's',
+                InputOption::VALUE_REQUIRED,
+                'Schema to generate scaffold files. (Ex: --schema="title:string")',
                 null
             ],
             [
@@ -280,17 +287,17 @@ class ScaffoldMakeCommand extends Command
                 null,
             ],
             [
-                'form', 
-                'f', 
-                InputOption::VALUE_OPTIONAL, 
-                'Use Illumintate/Html Form facade to generate input fields', 
+                'form',
+                'f',
+                InputOption::VALUE_OPTIONAL,
+                'Use Illumintate/Html Form facade to generate input fields',
                 false
             ],
             [
-                'prefix', 
-                'p', 
-                InputOption::VALUE_OPTIONAL, 
-                'Generate schema with prefix', 
+                'prefix',
+                'p',
+                InputOption::VALUE_OPTIONAL,
+                'Generate schema with prefix',
                 false
             ]
         ];
@@ -328,7 +335,7 @@ class ScaffoldMakeCommand extends Command
         $names['name'] = str_singular(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
 
 
-        if (!isset($names[$config])) 
+        if (!isset($names[$config]))
         {
             throw new \Exception("Position name is not found");
         };

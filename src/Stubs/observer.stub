@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Observers;
+
+use App\Models\{{Model}};
+
+// creating, created, updating, updated, saving,
+// saved,  deleting, deleted, restoring, restored
+
+class {{Model}}Observer
+{
+    public function creating({{Model}} ${{model}})
+    {
+        //
+    }
+
+    public function updating({{Model}} ${{model}})
+    {
+        //
+    }
+}

@@ -4,7 +4,5 @@ namespace App\Models;
 
 class {{Model}} extends Model
 {
-	use Traits\{{Model}}Operation;
-	
     protected $fillable = [{{fillable}}];
 }

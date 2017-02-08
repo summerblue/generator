@@ -44,9 +44,7 @@ class MakeModel
 
         $this->createBaseModelIfNotExists();
 
-        $this->createModelTrait();
-
-        if ($this->files->exists($path)) 
+        if ($this->files->exists($path))
         {
             return $this->scaffoldCommandObj->comment("x $path");
         }
@@ -101,7 +99,7 @@ class MakeModel
     protected function createBaseModelIfNotExists()
     {
         $base_model_path = $this->getPath("Model", 'model');
-        if (!$this->files->exists($base_model_path)) 
+        if (!$this->files->exists($base_model_path))
         {
             $this->makeDirectory($base_model_path);
             $this->files->put($base_model_path, $this->compileBaseModelStub());
@@ -120,34 +118,4 @@ class MakeModel
 
         return $stub;
     }
-    
-    protected function createModelTrait()
-    {
-        $name = $this->scaffoldCommandObj->getObjName('Name');
-        $path = $this->getPath($name, 'model-trait');
-        if (!$this->files->exists($path)) 
-        {
-            $dir = $this->files->dirname($path);
-            if ( ! $this->files->isDirectory($dir)) {
-                $this->files->makeDirectory($dir);
-            }
-
-            $this->files->put($path, $this->compileModelTraitStub());
-            return $this->scaffoldCommandObj->info("+ ". $path);
-        }
-
-        return $this->scaffoldCommandObj->comment("x " . $path);
-    }
-
-    protected function compileModelTraitStub()
-    {
-        $stub = $this->files->get(substr(__DIR__,0, -5) . 'Stubs/model_trait.stub');
-
-        $this->buildStub($this->scaffoldCommandObj->getMeta(), $stub);
-        $this->buildFillable($stub);
-
-        return $stub;
-    }
-
-
 }

@@ -37,7 +37,7 @@ trait MakerTrait
     protected function getArrayRecursive(array $array, $parent = '')
     {
         $data = [];
-        
+
         foreach ($array as $key => $value)
         {
             if(gettype($value) == 'array')
@@ -69,7 +69,7 @@ trait MakerTrait
             {
                 $files = array_merge
                 (
-                    $files, 
+                    $files,
                     $this->getFilesRecursive($file.DIRECTORY_SEPARATOR)
                 );
                 continue;
@@ -107,7 +107,7 @@ trait MakerTrait
             $this->scaffoldCommandM->error('Stub not found');
             return;
         }
-        
+
         $stubsFieldsFiles = $this->getFilesRecursive($stubsFieldsPath);
 
         $stubs = [];
@@ -118,7 +118,7 @@ trait MakerTrait
         }
 
         return $stubs;
-    }    
+    }
 
     /**
      * Get views stubs.
@@ -178,6 +178,10 @@ trait MakerTrait
         elseif($path == "request")
         {
             return './app/Http/Requests/'.$file_name.'.php';
+        }
+        elseif($path == "observer")
+        {
+            return './app/Observers/'.$file_name.'.php';
         }
         elseif($path == "policy")
         {

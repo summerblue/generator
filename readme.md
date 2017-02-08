@@ -58,7 +58,7 @@ $ php artisan make:scaffold Projects --schema="name:string:index,description:tex
 + ./app/Http/Requests/ProjectStoreRequest.php
 + ./app/Http/Requests/ProjectUpdateRequest.php
 + ./app/Policies/Policy.php
-+ ./app/Policies/ProjectPolicy.php
++ ./app/Policies/KnowledgeBasePolicy.php
 + ./app/Providers/AuthServiceProvider.php (Updated)
 + ./routes/web.php (Updated)
 
