@@ -27,8 +27,8 @@ class {{Model}}Controller extends Controller
 
 	public function store({{Model}}Request $request)
 	{
-		{{Model}}::create($request->all());
-		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item created successfully.');
+		${{model}} = {{Model}}::create($request->all());
+		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Item created successfully.');
 	}
 
 	public function show({{Model}} ${{model}})
@@ -46,7 +46,7 @@ class {{Model}}Controller extends Controller
 		$this->authorize('update', ${{model}});
 		${{model}}->update($request->all());
 
-		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item updated successfully.');
+		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Item updated successfully.');
 	}
 
 	public function destroy({{Model}} ${{model}})
