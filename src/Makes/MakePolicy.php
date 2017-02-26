@@ -1,7 +1,7 @@
 <?php
 namespace Summerblue\Generator\Makes;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
 use Summerblue\Generator\Commands\ScaffoldMakeCommand;
 use Summerblue\Generator\Validators\SchemaParser as ValidatorParser;
@@ -9,7 +9,7 @@ use Summerblue\Generator\Validators\SyntaxBuilder as ValidatorSyntax;
 
 class MakePolicy
 {
-    use AppNamespaceDetectorTrait, MakerTrait;
+    use DetectsApplicationNamespace, MakerTrait;
 
     /**
      * Store name from Model

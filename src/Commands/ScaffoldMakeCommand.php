@@ -2,7 +2,7 @@
 
 namespace Summerblue\Generator\Commands;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Input;
@@ -23,7 +23,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ScaffoldMakeCommand extends Command
 {
-    use AppNamespaceDetectorTrait, MakerTrait;
+    use DetectsApplicationNamespace, MakerTrait;
 
     /**
      * The console command name!
