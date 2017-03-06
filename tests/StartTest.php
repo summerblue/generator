@@ -2,7 +2,7 @@
 
 namespace Summerblue\Generator\Tests;
 
-use PHPUnit_Framework_TestCase as PHPUnit;
+use PHPUnit\Framework\TestCase as PHPUnit;
 
 class StartTest extends PHPUnit
 {	
