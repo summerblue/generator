@@ -37,12 +37,12 @@ You're all set. Run `php artisan` from the console, and you'll see the new comma
 
 Use this command to generator scaffolding of **Project** in your project:
 
-> php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned,default(0)"
+> php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned:default(0)"
 
 This command will generate:
 
 ```
-$ php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned,default(0)"
+$ php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned:default(0)"
 
 ----------- scaffolding: Project -----------
 
