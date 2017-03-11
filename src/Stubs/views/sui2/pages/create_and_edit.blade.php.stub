@@ -31,8 +31,8 @@
                 {{form_fields_fillable}}
 
                 <div class="ui message">
-                    <button type="submit" class="ui button primary">Save</button>
-                    <a class="ui button right floated" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="icon backward"></i>  Back</a>
+                    <button type="submit" class="ui button primary"><i class="icon save"></i>  Save</button>
+                    <a class="ui button right floated" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="icon backward"></i> Back</a>
                 </div>
             </form>
         </div>
