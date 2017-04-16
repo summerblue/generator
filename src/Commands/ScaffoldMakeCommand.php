@@ -2,7 +2,6 @@
 
 namespace Summerblue\Generator\Commands;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Input;
@@ -23,7 +22,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ScaffoldMakeCommand extends Command
 {
-    use DetectsApplicationNamespace, MakerTrait;
+    use MakerTrait;
 
     /**
      * The console command name!
@@ -68,7 +67,6 @@ class ScaffoldMakeCommand extends Command
     public function __construct(Filesystem $files)
     {
         parent::__construct();
-
 
         $this->files = $files;
         $this->composer = app()['composer'];
@@ -341,5 +339,21 @@ class ScaffoldMakeCommand extends Command
         };
 
         return $names[$config];
+    }
+
+    // AppNamespaceDetectorTrait and DetectsApplicationNamespace compatibility
+    protected function getAppNamespace()
+    {
+        $composer = json_decode(file_get_contents(base_path().'/composer.json'), true);
+
+        foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path)
+        {
+            foreach ((array) $path as $pathChoice)
+            {
+                if (realpath(app_path()) == realpath(base_path().'/'.$pathChoice)) return $namespace;
+            }
+        }
+
+        throw new RuntimeException("Unable to detect application namespace.");
     }
 }
