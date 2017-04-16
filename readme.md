@@ -44,21 +44,22 @@ This command will generate:
 ```
 $ php artisan make:scaffold Projects --schema="name:string:index,description:text:nullable,subscriber_count:integer:unsigned:default(0)"
 
+
 ----------- scaffolding: Project -----------
 
-+ ./database/migrations/2017_01_30_233548_create_projects_table.php
++ ./database/migrations/2017_04_17_065656_create_projects_table.php
 + ./database/factories/ModelFactory.php
-+ ./database/seeds/ProjectTableSeeder.php
++ ./database/seeds/ProjectsTableSeeder.php
 + ./database/seeds/DatabaseSeeder.php (Updated)
-+ ./app/Models/Model.php (Updated)
-+ ./app/Models/Traits/ProjectOperation.php
+x ./app/Models/Model.php (Skipped)
 + ./app/Models/Project.php
-+ ./app/Http/Controllers/ProjectController.php
-+ ./app/Http/Requests/Request.php
-+ ./app/Http/Requests/ProjectStoreRequest.php
-+ ./app/Http/Requests/ProjectUpdateRequest.php
-+ ./app/Policies/Policy.php
-+ ./app/Policies/KnowledgeBasePolicy.php
++ ./app/Http/Controllers/ProjectsController.php
+x ./app/Http/Requests/Request.php (Skipped)
++ ./app/Http/Requests/ProjectRequest.php
++ ./app/Observers/ProjectObserver.php
++ ./app/Providers/AppServiceProvider.php (Updated)
+x ./app/Policies/Policy.php
++ ./app/Policies/ProjectPolicy.php
 + ./app/Providers/AuthServiceProvider.php (Updated)
 + ./routes/web.php (Updated)
 
@@ -66,8 +67,8 @@ $ php artisan make:scaffold Projects --schema="name:string:index,description:tex
    + create_and_edit.blade.php
    + index.blade.php
    + show.blade.php
-+ ./resources/views/error.blade.php
-Migrated: 2017_01_30_233548_create_projects_table
+x ./resources/views/error.blade.php
+Migrated: 2017_04_17_065656_create_projects_table
 
 ----------- -------------------- -----------
 -----------   >DUMP AUTOLOAD<    -----------
