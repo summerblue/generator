@@ -51,7 +51,7 @@ class MakePolicy
     {
         $path = $this->getPath($name, 'policy');
 
-        if ($this->files->exists($path)) 
+        if ($this->files->exists($path))
         {
             return $this->scaffoldCommandObj->comment("x " . $path);
         }
@@ -79,22 +79,16 @@ class MakePolicy
         $content = $this->files->get($path);
 
         if (strpos($content, $policy_name) === false) {
-
-            $content = str_replace(
-                'as ServiceProvider;', 
-                "as ServiceProvider;\nuse App\Policies\\$policy_name;\nuse App\Models\\$model;",
-                $content
-                );
             $content = str_replace(
                 'policies = [',
-                "policies = [\n\t\t $model::class => $policy_name::class,",
+                "policies = [\n\t\t \App\Models\\$model::class => \App\Policies\\$policy_name::class,",
                 $content
                 );
             $this->files->put($path, $content);
 
             return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
         }
-        
+
         return $this->scaffoldCommandObj->comment("x " . $path . ' (Skipped)');
     }
 
