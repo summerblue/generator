@@ -1,7 +1,6 @@
 <?php
 namespace Summerblue\Generator\Makes;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
 use Summerblue\Generator\Commands\ScaffoldMakeCommand;
 use Summerblue\Generator\Validators\SchemaParser as ValidatorParser;
@@ -9,7 +8,7 @@ use Summerblue\Generator\Validators\SyntaxBuilder as ValidatorSyntax;
 
 class MakeFormRequest
 {
-    use DetectsApplicationNamespace, MakerTrait;
+    use MakerTrait;
 
     /**
      * Store name from Model

@@ -1,7 +1,6 @@
 <?php
 namespace Summerblue\Generator\Makes;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
 use Summerblue\Generator\Commands\ScaffoldMakeCommand;
 use Summerblue\Generator\Validators\SchemaParser as ValidatorParser;
@@ -10,7 +9,7 @@ use Summerblue\Generator\Validators\SyntaxBuilder as ValidatorSyntax;
 
 class MakeController
 {
-    use DetectsApplicationNamespace, MakerTrait;
+    use MakerTrait;
 
     /**
      * Store name from Model
@@ -44,7 +43,7 @@ class MakeController
         $name = $this->scaffoldCommandObj->getObjName('Name') . 'Controller';
         $path = $this->getPath($name, 'controller');
 
-        if ($this->files->exists($path)) 
+        if ($this->files->exists($path))
         {
             return $this->scaffoldCommandObj->comment("x " . $path);
         }

@@ -10,10 +10,10 @@ namespace Summerblue\Generator\Makes;
 
 use Illuminate\Filesystem\Filesystem;
 use Summerblue\Generator\Commands\ScaffoldMakeCommand;
+use Illuminate\Container\Container;
 
 trait MakerTrait
 {
-
     /**
      * The filesystem instance.
      *
@@ -260,4 +260,15 @@ trait MakerTrait
 
         return $stub;
     }
+
+    /**
+     * Get the application namespace.
+     *
+     * @return string
+     */
+    protected function getAppNamespace()
+    {
+        return Container::getInstance()->getNamespace();
+    }
+
 }

@@ -8,7 +8,6 @@
 
 namespace Summerblue\Generator\Makes;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Filesystem\Filesystem;
 use Summerblue\Generator\Commands\ScaffoldMakeCommand;
 use Summerblue\Generator\Migrations\SchemaParser;
@@ -16,7 +15,7 @@ use Summerblue\Generator\Migrations\SyntaxBuilder;
 
 class MakeRoute
 {
-    use DetectsApplicationNamespace, MakerTrait;
+    use MakerTrait;
 
     /**
      * Create a new instance.
