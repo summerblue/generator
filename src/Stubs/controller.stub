@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{{Model}}Request;
 
-class {{Model}}Controller extends Controller
+class {{Model}}sController extends Controller
 {
     public function __construct()
     {
