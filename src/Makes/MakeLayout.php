@@ -38,8 +38,8 @@ class MakeLayout
     protected function start()
     {
         $ui = $this->scaffoldCommandObj->getMeta()['ui'];
-        // $this->putViewLayout('Layout', "Stubs/views/$ui/layout.blade.php.stub", 'layout.blade.php');
-        $this->putViewLayout('Error', "Stubs/views/$ui/error.blade.php.stub", 'error.blade.php');
+        $this->putViewLayout("Stubs/views/$ui/layout.blade.php.stub", 'layouts/app.blade.php');
+        $this->putViewLayout("Stubs/views/$ui/error.blade.php.stub", 'common/error.blade.php');
     }
 
 
@@ -50,10 +50,12 @@ class MakeLayout
      * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    protected function putViewLayout($name, $stub, $file)
+    protected function putViewLayout($stub, $file)
     {
         $path_file = $this->getPathResource().$file;
         $path_stub = substr(__DIR__,0, -5) .$stub;
+
+        $this->makeDirectory($path_file);
 
         if ($this->files->exists($path_file))
         {

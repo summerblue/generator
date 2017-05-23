@@ -40,8 +40,8 @@ class MakeRoute
     private function start()
     {
         $name = $this->scaffoldCommandObj->getObjName('Name');
-        $path = $this->getPath($name, 'route');
-
+        $route_name = floatval(app()::VERSION) < 5.3 ? 'route_old' : 'route';
+        $path = $this->getPath($name, $route_name);
         $stub = $this->compileRouteStub();
         
         if (strpos($this->files->get($path), $stub) === false) {

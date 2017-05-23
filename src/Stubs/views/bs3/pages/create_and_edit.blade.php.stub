@@ -3,37 +3,40 @@
 @section('content')
 
 <div class="container">
-    <div class="panel panel-default col-md-10 col-md-offset-1">
-        <div class="panel-heading">
-            <h1>
-                <i class="glyphicon glyphicon-edit"></i> {{Model}} /
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            
+            <div class="panel-heading">
+                <h1>
+                    <i class="glyphicon glyphicon-edit"></i> {{Model}} /
+                    @if(${{model}}->id)
+                        Edit #{{${{model}}->id}}
+                    @else
+                        Create
+                    @endif
+                </h1>
+            </div>
+
+            @include('common.error')
+
+            <div class="panel-body">
                 @if(${{model}}->id)
-                    Edit #{{${{model}}->id}}
+                    <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST" accept-charset="UTF-8">
+                        <input type="hidden" name="_method" value="PUT">
                 @else
-                    Create
+                    <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" accept-charset="UTF-8">
                 @endif
-            </h1>
-        </div>
 
-        @include('error')
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <div class="panel-body">
-            @if(${{model}}->id)
-                <form action="{{ route('{{prefix}}{{models}}.update', ${{model}}->id) }}" method="POST" accept-charset="UTF-8">
-                    <input type="hidden" name="_method" value="PUT">
-            @else
-                <form action="{{ route('{{prefix}}{{models}}.store') }}" method="POST" accept-charset="UTF-8">
-            @endif
+                    {{form_fields_fillable}}
 
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                {{form_fields_fillable}}
-
-                <div class="well well-sm">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a class="btn btn-link pull-right" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
-                </div>
-            </form>
+                    <div class="well well-sm">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn btn-link pull-right" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

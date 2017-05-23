@@ -225,6 +225,9 @@ trait MakerTrait
         elseif($path == "route"){
             return './routes/web.php';
         }
+        elseif($path == "route_old"){
+            return './app/Http/routes.php';
+        }
     }
 
     protected function getFile($file)

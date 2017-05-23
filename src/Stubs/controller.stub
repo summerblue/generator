@@ -33,7 +33,7 @@ class {{Models}}Controller extends Controller
 	public function store({{Model}}Request $request)
 	{
 		${{model}} = {{Model}}::create($request->all());
-		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Item created successfully.');
+		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Created successfully.');
 	}
 
 	public function edit({{Model}} ${{model}})
@@ -47,7 +47,7 @@ class {{Models}}Controller extends Controller
 		$this->authorize('update', ${{model}});
 		${{model}}->update($request->all());
 
-		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Item updated successfully.');
+		return redirect()->route('{{prefix}}{{models}}.show', ${{model}}->id)->with('message', 'Updated successfully.');
 	}
 
 	public function destroy({{Model}} ${{model}})
@@ -55,6 +55,6 @@ class {{Models}}Controller extends Controller
 		$this->authorize('destroy', ${{model}});
 		${{model}}->delete();
 
-		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Item deleted successfully.');
+		return redirect()->route('{{prefix}}{{models}}.index')->with('message', 'Deleted successfully.');
 	}
 }

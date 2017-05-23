@@ -3,28 +3,29 @@
 @section('content')
 
 <div class="container">
-    <div class="panel panel-default col-md-10 col-md-offset-1">
-        <div class="panel-heading">
-            <h1>{{Model}} / Show #{{ ${{model}}->id }}</h1>
-        </div>
-
-        <div class="panel-body">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a class="btn btn-link" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                    </div>
-                    <div class="col-md-6">
-                         <a class="btn btn-sm btn-warning pull-right" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}">
-                            <i class="glyphicon glyphicon-edit"></i> Edit
-                        </a>
-                    </div>
-                </div>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>{{Model}} / Show #{{ ${{model}}->id }}</h1>
             </div>
 
-            {{form_fields_show}}
-        </div>
+            <div class="panel-body">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="btn btn-link" href="{{ route('{{prefix}}{{models}}.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
+                        </div>
+                        <div class="col-md-6">
+                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}">
+                                <i class="glyphicon glyphicon-edit"></i> Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                {{form_fields_show}}
+            </div>
+        </div>
     </div>
 </div>
 
