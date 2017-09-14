@@ -1,7 +1,12 @@
 {
   "name": "summerblue/generator",
   "description": "Extend Laravel 5.3's generators scaffold.",
-  "keywords": ["laravel", "generators", "scaffold" , "laravel5"],
+  "keywords": [
+    "laravel",
+    "generators",
+    "scaffold",
+    "laravel5"
+  ],
   "license": "MIT",
   "minimum-stability": "dev",
   "authors": [
@@ -19,11 +24,18 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~5.7",
-    "laravel/laravel": "5.4.*"
+    "laravel/laravel": "5.5.*"
   },
   "autoload": {
     "psr-4": {
       "Summerblue\\Generator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Summerblue\\Generator\\GeneratorsServiceProvider"
+      ]
     }
   }
 }

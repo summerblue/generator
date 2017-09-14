@@ -77,7 +77,7 @@ class ScaffoldMakeCommand extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $header = "scaffolding: {$this->getObjName("Name")}";
         $footer = str_pad('', strlen($header), '-');
