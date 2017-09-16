@@ -47,8 +47,10 @@ class MakeSeed
         $name = $this->scaffoldCommandObj->getObjName('Name');
         $path = $this->getPath($name, 'factory');
 
-        if (strpos($this->files->get($path), "App\Models\\$name") === false) {
-            $this->files->append($path, $this->compileStub('factory'));
+        if (!$this->files->exists($path)) {
+            $this->makeDirectory($path);
+            $this->files->put($path, $this->compileStub('factory'));
+
             return $this->scaffoldCommandObj->info("+ $path");
         }
 
@@ -59,8 +61,7 @@ class MakeSeed
     {
         $path = $this->getPath($this->scaffoldCommandObj->getObjName('Name') . 'sTableSeeder', 'seed');
 
-        if ($this->files->exists($path))
-        {
+        if ($this->files->exists($path)) {
             return $this->scaffoldCommandObj->comment('x ' . $path);
         }
 
@@ -81,7 +82,7 @@ class MakeSeed
                 '(UsersTableSeeder::class);',
                 "(UsersTableSeeder::class);\n\t\t\$this->call($name::class);",
                 $content
-                );
+            );
             $this->files->put($path, $content);
 
             return $this->scaffoldCommandObj->info('+ ' . $path . ' (Updated)');
@@ -89,5 +90,4 @@ class MakeSeed
 
         return $this->scaffoldCommandObj->comment("x " . $path . ' (Skipped)');
     }
-
 }

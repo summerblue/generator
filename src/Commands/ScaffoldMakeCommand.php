@@ -235,9 +235,9 @@ class ScaffoldMakeCommand extends Command
     protected function getArguments()
     {
         return
-        [
-            ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: Post)'],
-        ];
+            [
+                ['name', InputArgument::REQUIRED, 'The name of the model. (Ex: Post)'],
+            ];
     }
 
     /**
@@ -248,57 +248,57 @@ class ScaffoldMakeCommand extends Command
     protected function getOptions()
     {
         return
-        [
             [
-                'schema',
-                's',
-                InputOption::VALUE_REQUIRED,
-                'Schema to generate scaffold files. (Ex: --schema="title:string")',
-                null
-            ],
-            [
-                'ui',
-                'ui',
-                InputOption::VALUE_OPTIONAL,
-                'UI Framework to generate scaffold. (Default bs3 - bootstrap 3)',
-                'bs3'
-            ],
-            [
-                'validator',
-                'a',
-                InputOption::VALUE_OPTIONAL,
-                'Validators to generate scaffold files. (Ex: --validator="title:required")',
-                null
-            ],
-            [
-                'localization',
-                'l',
-                InputOption::VALUE_OPTIONAL,
-                'Localizations to generate scaffold files. (Ex. --localization="key:value")',
-                null
-            ],
-            [
-                'lang',
-                'b',
-                InputOption::VALUE_OPTIONAL,
-                'Language for Localization (Ex. --lang="en")',
-                null,
-            ],
-            [
-                'form',
-                'f',
-                InputOption::VALUE_OPTIONAL,
-                'Use Illumintate/Html Form facade to generate input fields',
-                false
-            ],
-            [
-                'prefix',
-                'p',
-                InputOption::VALUE_OPTIONAL,
-                'Generate schema with prefix',
-                false
-            ]
-        ];
+                [
+                    'schema',
+                    's',
+                    InputOption::VALUE_REQUIRED,
+                    'Schema to generate scaffold files. (Ex: --schema="title:string")',
+                    null
+                ],
+                [
+                    'ui',
+                    'ui',
+                    InputOption::VALUE_OPTIONAL,
+                    'UI Framework to generate scaffold. (Default bs3 - bootstrap 3)',
+                    'bs3'
+                ],
+                [
+                    'validator',
+                    'a',
+                    InputOption::VALUE_OPTIONAL,
+                    'Validators to generate scaffold files. (Ex: --validator="title:required")',
+                    null
+                ],
+                [
+                    'localization',
+                    'l',
+                    InputOption::VALUE_OPTIONAL,
+                    'Localizations to generate scaffold files. (Ex. --localization="key:value")',
+                    null
+                ],
+                [
+                    'lang',
+                    'b',
+                    InputOption::VALUE_OPTIONAL,
+                    'Language for Localization (Ex. --lang="en")',
+                    null,
+                ],
+                [
+                    'form',
+                    'f',
+                    InputOption::VALUE_OPTIONAL,
+                    'Use Illumintate/Html Form facade to generate input fields',
+                    false
+                ],
+                [
+                    'prefix',
+                    'p',
+                    InputOption::VALUE_OPTIONAL,
+                    'Generate schema with prefix',
+                    false
+                ]
+            ];
     }
 
     /**
@@ -333,8 +333,7 @@ class ScaffoldMakeCommand extends Command
         $names['name'] = str_singular(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
 
 
-        if (!isset($names[$config]))
-        {
+        if (!isset($names[$config])) {
             throw new \Exception("Position name is not found");
         };
 

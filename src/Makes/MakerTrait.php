@@ -189,7 +189,7 @@ trait MakerTrait
         }
         elseif($path == "factory")
         {
-            return './database/factories/UserFactory.php';
+            return './database/factories/'.$file_name.'Factory.php';
         }
         elseif($path == "model")
         {
