@@ -59,7 +59,7 @@ class CommandTest extends PHPUnit
 
         $this->files =
             [
-                './database/factories/ModelFactory.php',
+                './database/factories/UserFactory.php',
                 './database/seeds/DatabaseSeeder.php',
                 './app/Models/Model.php',
                 './app/Providers/AuthServiceProvider.php',

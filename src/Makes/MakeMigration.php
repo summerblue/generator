@@ -111,6 +111,7 @@ class MakeMigration
                 return true;
             }
         }
+
         return false;
     }
 }
