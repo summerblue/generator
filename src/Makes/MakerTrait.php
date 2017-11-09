@@ -90,7 +90,7 @@ trait MakerTrait
      */
     protected function getStubPath()
     {
-        return substr(__DIR__,0, -5) . 'Stubs/';
+        return substr(__DIR__,0, -5) . 'Stubs' . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -100,7 +100,7 @@ trait MakerTrait
      */
     protected function getStubFields($ui, $type)
     {
-        $stubsFieldsPath= $this->getStubPath()."views/$ui/fields/$type/";
+        $stubsFieldsPath = $this->getStubPath() . join(DIRECTORY_SEPARATOR, ['views', $ui, 'fields', $type, '']);
 
         if($this->existsDirectory($stubsFieldsPath))
         {
@@ -127,7 +127,7 @@ trait MakerTrait
      */
     protected function getStubViews($ui)
     {
-        $viewsPath = $this->getStubPath()."views/$ui/pages/";
+        $viewsPath = $this->getStubPath() . join(DIRECTORY_SEPARATOR, ['views', $ui, 'pages', '']);
         $files = $this->getFilesRecursive($viewsPath);
         $viewFiles = [];
 
