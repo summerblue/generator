@@ -30,20 +30,32 @@
                                     {{table_fields_content}}
                                     
                                     <td class="text-right">
-                                        <a class="btn btn-xs btn-primary" href="{{ route('{{prefix}}{{models}}.show', ${{model}}->id) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i> 
-                                        </a>
-                                        
-                                        <a class="btn btn-xs btn-warning" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}">
-                                            <i class="glyphicon glyphicon-edit"></i> 
-                                        </a>
+                                        <ul class="d-inline-flex">
 
+                                        <li class="list-inline-item">
+                                        <a class="btn btn-xs btn-primary" href="{{ route('{{prefix}}{{models}}.show', ${{model}}->id) }}">
+                                            Detail
+                                        </a>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                        <a class="btn btn-xs btn-warning" href="{{ route('{{prefix}}{{models}}.edit', ${{model}}->id) }}">
+                                            Edit
+                                        </a>
+                                        </li>
+
+                                        <li class="list-inline-item">
                                         <form action="{{ route('{{prefix}}{{models}}.destroy', ${{model}}->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                                             {{csrf_field()}}
                                             <input type="hidden" name="_method" value="DELETE">
 
-                                            <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
+                                            <button type="submit" class="btn btn-xs btn-danger">
+                                                Delete
+
+                                             </button>
                                         </form>
+                                        </li>
+                                        </ul>
                                     </td>
                                 </tr>
                             @endforeach
