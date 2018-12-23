@@ -1,0 +1,5 @@
+
+                <div class="form-group">
+                	<label for="{{field.name}}-field">{{field.Name}}</label>
+                	<input class="form-control" type="text" name="{{field.name}}" id="{{field.name}}-field" value="{{ old('{{field.name}}', ${{model}}->{{field.name}} ) }}" />
+                </div>

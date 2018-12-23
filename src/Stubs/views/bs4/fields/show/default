@@ -1,0 +1,4 @@
+<label>{{field.Name}}</label>
+<p>
+	{{ ${{model}}->{{field.name}} }}
+</p>
