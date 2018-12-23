@@ -260,8 +260,8 @@ class ScaffoldMakeCommand extends Command
                     'ui',
                     'ui',
                     InputOption::VALUE_OPTIONAL,
-                    'UI Framework to generate scaffold. (Default bs3 - bootstrap 3)',
-                    'bs3'
+                    'UI Framework to generate scaffold. (Default bs4 - bootstrap 4)',
+                    'bs4'
                 ],
                 [
                     'validator',
