@@ -59,7 +59,7 @@ class MakeSeed
 
     protected function generateSeed()
     {
-        $path = $this->getPath($this->scaffoldCommandObj->getObjName('Name') . 'sTableSeeder', 'seed');
+        $path = $this->getPath($this->scaffoldCommandObj->getObjName('Names') . 'TableSeeder', 'seed');
 
         if ($this->files->exists($path)) {
             return $this->scaffoldCommandObj->comment('x ' . $path);
@@ -74,7 +74,7 @@ class MakeSeed
     {
         $path = './database/seeds/DatabaseSeeder.php';
         $content = $this->files->get($path);
-        $name = $this->scaffoldCommandObj->getObjName('Name') . 'sTableSeeder';
+        $name = $this->scaffoldCommandObj->getObjName('Names') . 'TableSeeder';
 
         if (strpos($content, $name) === false) {
 
