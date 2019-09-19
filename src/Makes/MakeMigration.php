@@ -45,7 +45,7 @@ class MakeMigration
      * @return void
      */
     protected function start(){
-        $name = 'create_'.str_plural(strtolower( $this->scaffoldCommandObj->argument('name') )).'_table';
+        $name = 'create_'.\Str::plural(strtolower( $this->scaffoldCommandObj->argument('name') )).'_table';
         $path = $this->getPath($name);
 
         if ( ! $this->classExists($name))
@@ -99,7 +99,7 @@ class MakeMigration
 
         $schema = (new SyntaxBuilder)->create($schema, $this->scaffoldCommandObj->getMeta());
         $stub = str_replace(['{{schema_up}}', '{{schema_down}}'], $schema, $stub);
-        
+
         return $this;
     }
 

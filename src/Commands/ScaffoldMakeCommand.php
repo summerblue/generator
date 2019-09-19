@@ -324,13 +324,13 @@ class ScaffoldMakeCommand extends Command
         $args_name = $this->argument('name');
 
         // Name[0] = Tweet
-        $names['Name'] = str_singular(ucfirst($args_name));
+        $names['Name'] = \Str::singular(ucfirst($args_name));
         // Name[1] = Tweets
-        $names['Names'] = str_plural(ucfirst($args_name));
+        $names['Names'] = \Str::plural(ucfirst($args_name));
         // Name[2] = tweets
-        $names['names'] = str_plural(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
+        $names['names'] = \Str::plural(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
         // Name[3] = tweet
-        $names['name'] = str_singular(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
+        $names['name'] = \Str::singular(strtolower(preg_replace('/(?<!^)([A-Z])/', '_$1', $args_name)));
 
 
         if (!isset($names[$config])) {
