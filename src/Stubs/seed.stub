@@ -7,13 +7,13 @@ class {{Models}}TableSeeder extends Seeder
 {
     public function run()
     {
-        ${{model}}s = factory({{Model}}::class)->times(50)->make()->each(function (${{model}}, $index) {
+        ${{models}} = factory({{Model}}::class)->times(50)->make()->each(function (${{model}}, $index) {
             if ($index == 0) {
                 // ${{model}}->field = 'value';
             }
         });
 
-        {{Model}}::insert(${{model}}s->toArray());
+        {{Model}}::insert(${{models}}->toArray());
     }
 
 }
