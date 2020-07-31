@@ -10,6 +10,12 @@ Laravel Scaffold Generator, for Laravel 5.3.
 
 ### Step 1: Install Through Composer
 
+7.x:
+
+```
+composer require "summerblue/generator:7.*" --dev
+```
+
 6.x:
 
 ```
