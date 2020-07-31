@@ -16,7 +16,7 @@
     },
     {
       "name": "Summer",
-      "email": "summer@yousails.com"
+      "email": "summer@learnku.com"
     }
   ],
   "require": {
@@ -24,7 +24,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0",
-    "laravel/laravel": "6.*"
+    "laravel/laravel": "7.*"
   },
   "autoload": {
     "psr-4": {
