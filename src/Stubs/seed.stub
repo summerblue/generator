@@ -9,14 +9,7 @@ class {{Models}}TableSeeder extends Seeder
 {
     public function run()
     {
-        ${{models}} = factory({{Model}}::class)->times(50)->make()->each(function (${{model}}, $index) {
-            if ($index == 0) {
-                // ${{model}}->field = 'value';
-            }
-        });
-
-        {{Model}}::insert(${{models}}->toArray());
+        {{Model}}::factory()->count(10)->create();
     }
-
 }
 
