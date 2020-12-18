@@ -76,8 +76,8 @@ $ php artisan make:scaffold Projects --schema="name:string:index,description:tex
 
 + ./database/migrations/2017_04_17_065656_create_projects_table.php
 + ./database/factories/ModelFactory.php
-+ ./database/seeds/ProjectsTableSeeder.php
-+ ./database/seeds/DatabaseSeeder.php (Updated)
++ ./database/seeders/ProjectsTableSeeder.php
++ ./database/seeders/DatabaseSeeder.php (Updated)
 x ./app/Models/Model.php (Skipped)
 + ./app/Models/Project.php
 + ./app/Http/Controllers/ProjectsController.php

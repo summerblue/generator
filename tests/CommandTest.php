@@ -51,7 +51,7 @@ class CommandTest extends PHPUnit
                 'app/Http/Controllers',
                 'app/Models',
                 'app/Providers',
-                'database/seeds',
+                'database/seeders',
                 'database/migrations',
                 'database/factories',
                 'resources/views',
@@ -60,7 +60,7 @@ class CommandTest extends PHPUnit
         $this->files =
             [
                 './database/factories/UserFactory.php',
-                './database/seeds/DatabaseSeeder.php',
+                './database/seeders/DatabaseSeeder.php',
                 './app/Models/Model.php',
                 './app/Providers/AuthServiceProvider.php',
                 './app/Providers/AppServiceProvider.php',

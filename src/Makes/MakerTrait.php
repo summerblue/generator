@@ -201,7 +201,7 @@ trait MakerTrait
         }
         elseif($path == "seed")
         {
-            return './database/seeds/'.$file_name.'.php';
+            return './database/seeders/'.$file_name.'.php';
         }
         elseif($path == "view-index")
         {
